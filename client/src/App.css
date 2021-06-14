@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+nav{
+  /* height: 5vh; */
+  /* font-family: 'Concert One', cursive; */
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 500;
+  position: fixed;
+  top:0;
+  width: 100%;
+  background-color: white;
+  /* opacity: 1; */
+  z-index:10;
+}
+.nav-left img {
+  margin-right: 1rem;
+}
+.nav-right {
+  margin-right: 2rem;
+}
+.nav-left {
+  margin-left: 2rem;
+}
+.nav-right, .nav-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nav-right a {
+  margin-left: 2rem;
+}
+.nav-left a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+nav img {
+  height: 50px;
+  /* max-height: 100%; */
+}
+
+nav a {
+  text-decoration: none;
+}
+nav a{
+  color: black;
+}
+nav a:hover {
+  color: #f78268;
+}
+
+#topButton {
+  display: none;
+  position: fixed;
+  bottom: 0rem;
+  right: 0rem;
+  z-index: 99;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  /* width: 100%; */
+  border: none;
+  background-color: #f78268;
+}
+#topButton i {
+  color:black;
+}
+
+#topButton:hover {
+  background-color: white;
+  color: #f78268;
+}
+#topButton:hover i {
+  color: #f78268;
+}

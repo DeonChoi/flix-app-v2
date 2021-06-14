@@ -1,0 +1,66 @@
+.movie-info-card-container {
+    /* margin-top: 10vh; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.search-form {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+}
+.search-form button {
+    background-color: #f78268;
+    color: #000;
+}
+.search-form button:hover {
+    background-color: #fff;
+    border: 1px solid rgb(131, 131, 131);
+    color: #f78268;
+}
+.form-group {
+    width: 25%;
+}
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #f78268;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(247, 131, 105, 0.25);
+}
+
+.siteLogo {
+    width: 150px;
+    height: 150px;
+    margin-right: 30px;
+    transition: width 0.75s, height 0.75s, transform 0.75s;
+}
+.siteLogo:hover {
+    width: 150px;
+    height: 150px;
+    transform: rotate(360deg);
+}
+.home-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15vh;
+}
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+.load-more {
+    background-color: #f78268;
+    border: 1px solid #f78268;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+}
+.load-more:hover {
+    color: #f78268;
+    background-color: #fff;
+    border: 1px solid #f78268;
+}
