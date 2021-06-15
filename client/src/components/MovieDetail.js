@@ -27,7 +27,7 @@ const MovieDetail = () => {
                 console.log(data.data)
                 setCurrentMovie(data.data)
                 setMovieBackgroundImage(data.data.backdrop_path ? 'https://image.tmdb.org/t/p/original' + data.data.backdrop_path : stockBackdrop)
-                setMoviePosterImage('https://image.tmdb.org/t/p/original' + data.data.poster_path)
+                // setMoviePosterImage('https://image.tmdb.org/t/p/original' + data.data.poster_path)
             })
             .catch(err => console.log(err))
     }

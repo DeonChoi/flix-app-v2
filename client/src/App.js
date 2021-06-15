@@ -65,7 +65,7 @@ const App = () => {
       </Router>
 
       <button onClick={goToTop} id='topButton' className='btn btn-light' title='Go To Top'>
-      <i class="bi bi-arrow-up-circle-fill"></i>
+      <i className="bi bi-arrow-up-circle-fill"></i>
       </button>
     </Context.Provider>
   )
