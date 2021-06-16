@@ -7,26 +7,29 @@ import { useHistory } from 'react-router-dom';
 
 const Login = () => {
 
+    const {isLoggedIn, setLoggedIn} = useContext(Context);
     let history = useHistory();
     const {GOOGLE_CLIENT_ID} = useContext(Context);
     // console.log(GOOGLE_CLIENT_ID)
 
     const handleSuccess = async (response) => {
         if (response.tokenId) {
+            setLoggedIn(true)
             const userLogin = {
                 email: response.profileObj.email,
             }
             console.log(response)
-            await axios.post('/google/login', userLogin)
-                .then( res => {
-                    // console.log(res);
-                    console.log('Logged In');
-                    localStorage.setItem('google-auth-token', response.tokenId);
-                    localStorage.setItem('google-email', response.profileObj.email);
-                    history.push('..');
-                    // window.location.reload();
-                })
-                .catch( err => console.error(err));
+            //uncomment this call later
+            // await axios.post('/google/login', userLogin)
+            //     .then( res => {
+            //         // console.log(res);
+            //         console.log('Logged In');
+            //         localStorage.setItem('google-auth-token', response.tokenId);
+            //         localStorage.setItem('google-email', response.profileObj.email);
+            //         history.push('..');
+            //         // window.location.reload();
+            //     })
+            //     .catch( err => console.error(err));
 
             console.log('logging in')
             // console.log(response.profileObj.email)

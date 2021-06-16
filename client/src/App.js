@@ -9,10 +9,13 @@ import MovieDetail from "./components/MovieDetail";
 import Search from "./components/Search";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
+
 // require('dotenv').config();
 
 const App = () => {
 
+  const [loggedIn, setLoggedIn] = useState(false);
   const [lastSearch, setLastSearch] = useState();
   const API_KEY = process.env.REACT_APP_API_KEY
   const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID
@@ -36,7 +39,8 @@ const App = () => {
   return (
     <Context.Provider value={{
       lastSearch, setLastSearch,
-      API_KEY, GOOGLE_CLIENT_ID
+      API_KEY, GOOGLE_CLIENT_ID,
+      loggedIn, setLoggedIn
     }}>
       <Router basename={'/'}>
         <header>
@@ -50,8 +54,11 @@ const App = () => {
             <div className='nav-right'>
               <Link to={'/'}>Search</Link>
               <Link to={'/watchlist'}>Watchlist</Link>
-              <Link to={'/register'}>Register</Link>
-              <Link to={'/login'}>Login</Link>
+              {/* <Link to={'/register'}>Register</Link> */}
+              {loggedIn 
+              ?<Link to={'/logout'}>Logout</Link>
+              :<Link to={'/login'}>Login</Link>
+              }
             </div>
           </nav>
         </header>
@@ -61,6 +68,7 @@ const App = () => {
           <Route path='/search/:searchTerm' component={Search} />
           <Route path='/register' component={Register} />
           <Route path='/login' component={Login} />
+          <Route path='/logout' component={Logout} />
         </main>
       </Router>
 
