@@ -24,8 +24,8 @@ const Login = () => {
             //     .then( res => {
             //         // console.log(res);
             //         console.log('Logged In');
-            //         localStorage.setItem('google-auth-token', response.tokenId);
-            //         localStorage.setItem('google-email', response.profileObj.email);
+                    localStorage.setItem('google-auth-token', response.tokenId);
+                    localStorage.setItem('google-email', response.profileObj.email);
             //         history.push('..');
             //         // window.location.reload();
             //     })

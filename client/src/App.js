@@ -15,7 +15,7 @@ import Logout from "./components/Logout";
 
 const App = () => {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('google-auth-token') !== null && localStorage.getItem('google-email') !== null);
   const [lastSearch, setLastSearch] = useState();
   const API_KEY = process.env.REACT_APP_API_KEY
   const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID

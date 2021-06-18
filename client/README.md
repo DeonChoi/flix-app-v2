@@ -9,6 +9,7 @@ https://flix-movies-app.herokuapp.com
 
 The original project was created when I first started using React. There was no use of any state managment library, just prop drilling.
 In this revised project, I focus on using the Context API which I have used with other projects before, storing state in URL (ie. the ability to copy the URL of a specific movie and share with others), lazy loading, a better user experience, and Google Authentication.
+I am also choosing to use NoSQL (like many of my previous projects) instead of SQL for this project.
 
 
 
