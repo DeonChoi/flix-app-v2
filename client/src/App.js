@@ -10,6 +10,7 @@ import Search from "./components/Search";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
+import RegisterSuccess from './components/RegisterSuccess';
 
 // require('dotenv').config();
 
@@ -54,10 +55,13 @@ const App = () => {
             <div className='nav-right'>
               <Link to={'/'}>Search</Link>
               <Link to={'/watchlist'}>Watchlist</Link>
-              {/* <Link to={'/register'}>Register</Link> */}
+              
               {loggedIn 
-              ?<Link to={'/logout'}>Logout</Link>
-              :<Link to={'/login'}>Login</Link>
+              ?<Link to={'/user/logout'}>Logout</Link>
+              : <>
+                  <Link to={'/user/register'}>Register</Link>
+                  <Link to={'/user/login'}>Login</Link>
+                </>
               }
             </div>
           </nav>
@@ -66,9 +70,10 @@ const App = () => {
           <Route exact path='/' component={Home} />
           <Route path='/movie/:id' component={MovieDetail} />
           <Route path='/search/:searchTerm' component={Search} />
-          <Route path='/register' component={Register} />
-          <Route path='/login' component={Login} />
-          <Route path='/logout' component={Logout} />
+          <Route exact path='/user/register' component={Register} />
+          <Route exact path='/user/login' component={Login} />
+          <Route exact path='/user/logout' component={Logout} />
+          <Route exact path='/user/register/success' component={RegisterSuccess} />
         </main>
       </Router>
 

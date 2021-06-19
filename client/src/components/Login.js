@@ -5,12 +5,11 @@ import '../styles/Login.css';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({text}) => {
 
     const {isLoggedIn, setLoggedIn} = useContext(Context);
     let history = useHistory();
     const {GOOGLE_CLIENT_ID} = useContext(Context);
-    // console.log(GOOGLE_CLIENT_ID)
 
     const handleSuccess = async (response) => {
         if (response.tokenId) {
@@ -19,23 +18,15 @@ const Login = () => {
                 email: response.profileObj.email,
             }
             console.log(response)
-            //uncomment this call later
-            // await axios.post('/google/login', userLogin)
-            //     .then( res => {
-            //         // console.log(res);
-            //         console.log('Logged In');
+            await axios.post('http://localhost:5000/user/login', userLogin)
+                .then( res => {
+                    console.log('Logged In');
                     localStorage.setItem('google-auth-token', response.tokenId);
                     localStorage.setItem('google-email', response.profileObj.email);
-            //         history.push('..');
-            //         // window.location.reload();
-            //     })
-            //     .catch( err => console.error(err));
-
-            console.log('logging in')
-            // console.log(response.profileObj.email)
-            history.push('..')
+                    history.push('..');
+                })
+                .catch( err => console.error(err));
         }
-        // console.log(response)
     }
 
     const handleFailure = response => {
@@ -45,6 +36,14 @@ const Login = () => {
 
     return (
         <div className='login-container'>
+            {text 
+            ?   <div className='registration-success-message'>
+                    <h3>{text}</h3>
+                    <h6>Login to start saving flix to your watchlist!</h6>
+                </div>
+            :   null
+            }
+            
             <GoogleLogin
                 clientId={GOOGLE_CLIENT_ID}
                 buttonText="Login with Google"
