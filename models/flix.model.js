@@ -37,7 +37,7 @@ const flixSchema = new Schema({
     },
     homepage: {
         type: String,
-        required: true
+        required: false
     },
     posterPath: {
         type: String,

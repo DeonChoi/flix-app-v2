@@ -24,10 +24,9 @@ connection.once('open', () => {
 
 const userRouter = require('./routes/userRoutes');
 app.use('/user', userRouter);
+const watchlistRouter = require('./routes/watchlistRoutes');
+app.use('/watchlist', watchlistRouter);
 
-// app.get('/', (req,res) => {
-//     res.json('hi')
-// })
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`)

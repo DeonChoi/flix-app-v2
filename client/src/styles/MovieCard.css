@@ -15,3 +15,14 @@
     border-radius: 15px;
     aspect-ratio: 2/3;
 }
+.movie-info-card button {
+    border: none;
+    background: none;
+}
+.movie-info-card i {
+    color: #f78268;
+    font-size: 2rem;
+}
+.movie-info-card i:hover {
+    color: black;
+}

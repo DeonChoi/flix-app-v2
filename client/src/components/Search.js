@@ -6,7 +6,7 @@ import Logo from '../images/pix-logo-2.png'
 import {Context} from '../Context'
 import { useHistory,useParams } from 'react-router-dom';
 
-const Home = () => {
+const Search = () => {
     let { searchTerm } = useParams();
     const [searchResults, setSearchResults] = useState([])
     const {lastSearch, setLastSearch} = useContext(Context);
@@ -96,11 +96,11 @@ const Home = () => {
             </form>
             
             <div className='movie-info-card-container'>
-                {searchResults 
+                {searchResults.length > 0
                 ? searchResults.map( searchMovie => 
                     <MovieCard homeMovie={searchMovie} key={searchMovie.id}></MovieCard>    
                 )
-                : <div>No Results Found</div>   
+                : <h3>No Results Found</h3>   
                 }
             </div>
             { currentPage < totalPages
@@ -112,4 +112,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Search

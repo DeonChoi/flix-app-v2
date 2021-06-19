@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import MovieDetail from "./components/MovieDetail";
 import Search from "./components/Search";
 import Register from "./components/Register";
+import Watchlist from "./components/Watchlist";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import RegisterSuccess from './components/RegisterSuccess';
@@ -18,6 +19,8 @@ const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('google-auth-token') !== null && localStorage.getItem('google-email') !== null);
   const [lastSearch, setLastSearch] = useState();
+  const [watchlist, setWatchlist] = useState([])
+
   const API_KEY = process.env.REACT_APP_API_KEY
   const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
@@ -41,7 +44,8 @@ const App = () => {
     <Context.Provider value={{
       lastSearch, setLastSearch,
       API_KEY, GOOGLE_CLIENT_ID,
-      loggedIn, setLoggedIn
+      loggedIn, setLoggedIn,
+      watchlist, setWatchlist
     }}>
       <Router basename={'/'}>
         <header>
@@ -70,6 +74,7 @@ const App = () => {
           <Route exact path='/' component={Home} />
           <Route path='/movie/:id' component={MovieDetail} />
           <Route path='/search/:searchTerm' component={Search} />
+          <Route path='/watchlist' component={Watchlist} />
           <Route exact path='/user/register' component={Register} />
           <Route exact path='/user/login' component={Login} />
           <Route exact path='/user/logout' component={Logout} />

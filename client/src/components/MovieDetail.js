@@ -31,6 +31,51 @@ const MovieDetail = () => {
             })
             .catch(err => console.log(err))
     }
+
+    const saveFlix = async (e) => {
+        e.preventDefault();
+
+        if (localStorage.getItem('google-auth-token') === null) {
+            // setSaveModalMessage('Login to save flix to watchlist')
+            // showImageSaveModal();
+            return;
+        } else {
+            const newFlix = {
+                    flixID: currentMovie.id,
+                    // userID: userID //server will search for userID based on email in request header and add to the object being saved
+                    overview: currentMovie.overview,
+                    title: currentMovie.title,
+                    voteAverage: currentMovie.vote_average,
+                    voteCount: currentMovie.vote_count,
+                    runtime: currentMovie.runtime,
+                    releaseDate: currentMovie.release_date,
+                    homepage: currentMovie.homepage,
+                    posterPath: currentMovie.poster_path,
+                    backdropPath: currentMovie.backdrop_path,
+                    date: new Date()
+            };
+
+            let headers;
+            if (localStorage.getItem('google-auth-token')) {
+                headers = {
+                    headers: {
+                        'google-auth-token': localStorage.getItem('google-auth-token'),
+                        'email' : localStorage.getItem('google-email')
+                    }
+                };
+            };
+
+            await axios.post(`http://localhost:5000/watchlist/add`, newFlix, headers)
+                .then(res => {
+                    console.log(res)
+                    console.log('Flix Saved')
+                    // setSaveModalMessage(res.data)
+                    // showImageSaveModal()
+                })
+                .catch(err => console.log(err))
+        }
+    }
+
     return (
         <>
             {currentMovie
@@ -74,7 +119,7 @@ const MovieDetail = () => {
                             ? <a target="_blank" rel="noreferrer" href={currentMovie.homepage}><button type="button" className="btn btn-light">Learn More</button></a>
                             : null
                             }
-                            <button type="button" className="btn btn-light">Add to Watchlist</button>
+                            <button type="button" className="btn btn-light" onClick={saveFlix}>Add to Watchlist</button>
                         </div>
                     </div>
                 </div>
